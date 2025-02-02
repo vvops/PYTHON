@@ -26,6 +26,11 @@ print(countries[africa_key])
 countries["Европа"] = ["Россия", "Испания","Италия"]  #добавление в словарь countries
 print(countries)
 
-countries[0] = "Франция"  #добавление
-print(countries)
+#countries[0] = "Франция"  #добавление
+#print(countries)
 #############Добавление элементов в существующий список############################
+
+africa.append("жопия")
+print(africa)
+print(countries)
+print(len(countries["Африка"]))
