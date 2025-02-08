@@ -1,11 +1,10 @@
 HELP = """
 help - наечетать справку
 add - добавить задачу в список
-show - вывести весь спиок здач"""
-
+show - вывести весь спиок здач
+exit - выйти"""
 tasks = []
 run = True
-
 
 while run:
     command = input("Введите команду: ")
@@ -17,8 +16,9 @@ while run:
         task = input("Введе название задачи: ")
         tasks.append(task)
         print("Задача добавлена!")
+    elif command == "exit":
+        break
     else:
         print("Неизвестная команнада! Выберете из доступных:" + HELP)
-        run = False # 1 вариант завершения
         break
 print("Пока-пока!")
