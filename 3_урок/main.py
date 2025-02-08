@@ -3,7 +3,9 @@ help - наечетать справку
 add - добавить задачу в список
 show - вывести весь спиок здач
 exit - выйти"""
-tasks = []
+tasks = {
+
+}
 run = True
 
 while run:
@@ -11,11 +13,23 @@ while run:
     if command == "help":
         print(HELP)
     elif command == "show":
-        print(tasks)
+        date = input("Введите дату для отображения списка задач, для вывода полного списка напишите 'all': ")
+        if date in tasks:  # проверка даты списка задач 
+            for task in tasks[date]:
+                print('-', task )
+        elif date == "all":
+          print('-', tasks)
+        else:
+            print("Такой даты в списке задач не существует. Скорее всего на эту дату нет задач.")       
     elif command == "add":
-        task = input("Введе название задачи: ")
-        tasks.append(task)
-        print("Задача добавлена!")
+        date = input("Введите дату для добавления задачи: ")
+        task = input("Введите название задачи: ")
+        if date in tasks: #проверка даты в словаре
+          tasks[date].append(task)
+        else:
+            tasks[date] = []
+            tasks[date].append(task)
+        print("Задача:", task,"добавлена в дату", date)
     elif command == "exit":
         break
     else:
