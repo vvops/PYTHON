@@ -1,17 +1,29 @@
+#переменные
 HELP = """
 help - наечетать справку
 add - добавить задачу в список
 show - вывести весь спиок здач
 exit - выйти
 random - добавить случаюную задачу на дату сегодня"""
-
 RANDOM_TASK = "Почистить зубы"
+
+####функция
+def add_todo(date, task):
+  if date in tasks: #проверка даты в словаре
+    tasks[date].append(task)
+  else:
+    tasks[date] = []
+    tasks[date].append(task)
+  print("Задача:", task,"добавлена в дату", date)
+
 
 tasks = {
 
 }
-run = True
 
+#состояние цикла
+run = True
+# wbrk
 while run:
     command = input("Введите команду: ")
     if command == "help":
@@ -28,20 +40,22 @@ while run:
     elif command == "add":
         date = input("Введите дату для добавления задачи: ")
         task = input("Введите название задачи: ")
-        if date in tasks: #проверка даты в словаре
-          tasks[date].append(task)
-        else:
-            tasks[date] = []
-            tasks[date].append(task)
-        print("Задача:", task,"добавлена в дату", date)
+        add_todo(date, task) #заменил нижный код фукцией
+#        if date in tasks: #проверка даты в словаре
+#          tasks[date].append(task)
+#        else:
+#            tasks[date] = []
+#            tasks[date].append(task)
+#        print("Задача:", task,"добавлена в дату", date)
     elif command == "exit":
         break
     elif command == "random":
-        if "Сегодня" in tasks:
-            tasks["Сегодня"].append(RANDOM_TASK)
-        else:
-            tasks["Сегодня"] = []
-            tasks["Сегодня"].append(RANDOM_TASK)
+        add_todo("Сегодня", RANDOM_TASK) #заменил нижный код фукцией
+#        if "Сегодня" in tasks:
+#            tasks["Сегодня"].append(RANDOM_TASK)
+#        else:
+#            tasks["Сегодня"] = []
+#            tasks["Сегодня"].append(RANDOM_TASK)
     else:
         print("Неизвестная команнада! Выберете из доступных:" + HELP)
         break
