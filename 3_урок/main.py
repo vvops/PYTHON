@@ -2,7 +2,11 @@ HELP = """
 help - наечетать справку
 add - добавить задачу в список
 show - вывести весь спиок здач
-exit - выйти"""
+exit - выйти
+random - добавить случаюную задачу на дату сегодня"""
+
+RANDOM_TASK = "Почистить зубы"
+
 tasks = {
 
 }
@@ -32,6 +36,12 @@ while run:
         print("Задача:", task,"добавлена в дату", date)
     elif command == "exit":
         break
+    elif command == "random":
+        if "Сегодня" in tasks:
+            tasks["Сегодня"].append(RANDOM_TASK)
+        else:
+            tasks["Сегодня"] = []
+            tasks["Сегодня"].append(RANDOM_TASK)
     else:
         print("Неизвестная команнада! Выберете из доступных:" + HELP)
         break
